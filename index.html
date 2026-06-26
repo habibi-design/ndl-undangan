@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Yasin & Afzah</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="src/style.css">
+</head>
+<body class="font-sans bg-[#F9F8F6] text-stone-800 antialiased selection:bg-stone-300 selection:text-stone-900">
+
+    <section id="cover" class="fixed inset-0 z-50 flex flex-col items-center justify-center p-5 transition-transform duration-1000 ease-in-out bg-[#F9F8F6]">
+        <div class="w-full h-full border-[1px] border-stone-400 p-2 relative rounded-t-[150px] overflow-hidden flex flex-col justify-center items-center bg-cover bg-center shadow-2xl" 
+             style="background-image: linear-gradient(rgba(30, 30, 30, 0.4), rgba(20, 20, 20, 0.7)), url('assets/cover-bg.jpg');">
+            
+            <div class="text-white text-center z-10 flex flex-col items-center">
+                <span class="tracking-[0.3em] text-[10px] uppercase mb-4 opacity-80 font-medium">The Wedding Of</span>
+                <h1 class="font-aesthetic text-7xl md:text-8xl text-[#F2E8C6] drop-shadow-md mb-2 dynamic-pulse">Yasin & Afzah</h1>
+                <div class="w-12 h-[1px] bg-[#F2E8C6] opacity-50 my-6"></div>
+                <p class="font-editorial italic tracking-widest text-lg opacity-90 mb-10">31 . 12 . 2026</p>
+                
+                <button id="btn-buka" class="bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white/20 text-white font-sans text-xs tracking-[0.2em] uppercase py-3.5 px-8 rounded-full transition duration-500 cursor-pointer">
+                    Buka Undangan
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <audio id="musik-latar" loop>
+        <source src="assets/musik.mp3" type="audio/mpeg">
+    </audio>
+
+    <main id="konten-utama" class="max-w-md mx-auto bg-[#F9F8F6] min-h-screen shadow-[0_0_40px_rgba(0,0,0,0.05)] pb-20 hidden overflow-x-hidden relative">
+        
+        <div class="h-64 bg-cover bg-center relative" style="background-image: url('assets/banner.jpg');">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#F9F8F6]"></div>
+        </div>
+        
+        <div class="px-8 pt-4 pb-12 text-center relative z-10">
+            <p class="font-editorial italic text-stone-500 text-sm mb-6 leading-relaxed">"Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri..."</p>
+            
+            <h2 class="font-editorial text-4xl text-stone-800 tracking-wide mb-10 efek-scroll">Sang Mempelai</h2>
+            
+            <div class="flex flex-col items-center mb-8 efek-scroll">
+                <div class="w-28 h-36 bg-stone-200 rounded-t-full rounded-b-lg mb-5 overflow-hidden shadow-md border-2 border-white">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=300" alt="Groom" class="w-full h-full object-cover grayscale opacity-80">
+                </div>
+                <h3 class="font-editorial text-2xl font-semibold text-stone-800 tracking-wider">Yasin Umar Sardi Amelz</h3>
+                <p class="font-sans text-[10px] uppercase tracking-widest text-stone-400 mt-2">Putra Bpk. Nasroen & Ibu Nasroen</p>
+            </div>
+            
+            <div class="font-aesthetic text-4xl text-stone-300 my-4 efek-scroll">&</div>
+            
+            <div class="flex flex-col items-center mb-10 efek-scroll">
+                <div class="w-28 h-36 bg-stone-200 rounded-t-full rounded-b-lg mb-5 overflow-hidden shadow-md border-2 border-white">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300" alt="Bride" class="w-full h-full object-cover grayscale opacity-80">
+                </div>
+                <h3 class="font-editorial text-2xl font-semibold text-stone-800 tracking-wider">Afifah Azzah</h3>
+                <p class="font-sans text-[10px] uppercase tracking-widest text-stone-400 mt-2">Putri Bpk. Joel & Ibu Maul</p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 shadow-sm border border-stone-100 mt-12 efek-scroll">
+                <h3 class="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] mb-6 text-stone-400">Menuju Hari Bahagia</h3>
+                <div class="flex justify-center gap-4" id="countdown">
+                    <div class="flex flex-col items-center">
+                        <span id="hari" class="font-editorial text-3xl text-stone-800">00</span>
+                        <span class="font-sans text-[8px] uppercase tracking-widest text-stone-400 mt-1">Hari</span>
+                    </div>
+                    <span class="font-editorial text-2xl text-stone-300">:</span>
+                    <div class="flex flex-col items-center">
+                        <span id="jam" class="font-editorial text-3xl text-stone-800">00</span>
+                        <span class="font-sans text-[8px] uppercase tracking-widest text-stone-400 mt-1">Jam</span>
+                    </div>
+                    <span class="font-editorial text-2xl text-stone-300">:</span>
+                    <div class="flex flex-col items-center">
+                        <span id="menit" class="font-editorial text-3xl text-stone-800">00</span>
+                        <span class="font-sans text-[8px] uppercase tracking-widest text-stone-400 mt-1">Menit</span>
+                    </div>
+                    <span class="font-editorial text-2xl text-stone-300">:</span>
+                    <div class="flex flex-col items-center">
+                        <span id="detik" class="font-editorial text-3xl text-stone-800">00</span>
+                        <span class="font-sans text-[8px] uppercase tracking-widest text-stone-400 mt-1">Detik</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="bg-stone-800 text-stone-100 py-16 px-8 text-center relative z-10">
+            <h2 class="font-editorial text-4xl mb-10 tracking-wide text-[#F2E8C6] efek-scroll">Agenda Acara</h2>
+            
+            <div class="border border-stone-600 p-8 relative efek-scroll">
+                <div class="absolute -top-2 -left-2 w-4 h-4 border-t border-l border-[#F2E8C6]"></div>
+                <div class="absolute -bottom-2 -right-2 w-4 h-4 border-b border-r border-[#F2E8C6]"></div>
+                
+                <h3 class="font-sans text-xs font-medium uppercase tracking-[0.2em] text-[#F2E8C6] mb-3">Akad Nikah</h3>
+                <p class="font-editorial italic text-lg mb-1">Kamis, 31 Desember 2026</p>
+                <p class="font-sans text-[10px] text-stone-400 tracking-wider mb-4">09:00 WIB - Selesai</p>
+                <p class="font-sans text-[10px] leading-relaxed text-stone-300 uppercase tracking-wide">KUA Kecamatan Setempat</p>
+                
+                <div class="w-1/2 h-[1px] bg-stone-600 mx-auto my-8"></div>
+                
+                <h3 class="font-sans text-xs font-medium uppercase tracking-[0.2em] text-[#F2E8C6] mb-3">Resepsi</h3>
+                <p class="font-editorial italic text-lg mb-1">Kamis, 31 Desember 2026</p>
+                <p class="font-sans text-[10px] text-stone-400 tracking-wider mb-4">11:00 WIB - Selesai</p>
+                <p class="font-sans text-[10px] leading-relaxed text-stone-300 uppercase tracking-wide">Gedung Pertemuan Utama<br>Jl. Raya Pernikahan No. 1</p>
+            </div>
+
+            <a href="https://maps.google.com" target="_blank" class="inline-block mt-10 bg-[#F2E8C6] hover:bg-white text-stone-900 font-sans text-[10px] font-bold py-3.5 px-8 tracking-[0.2em] uppercase transition duration-300 efek-scroll">
+                Buka Peta Lokasi
+            </a>
+        </section>
+
+        <section class="py-16 px-6 text-center relative z-10 overflow-hidden">
+            <h2 class="font-editorial text-4xl text-stone-800 tracking-wide mb-12 efek-scroll">Jejak Kisah</h2>
+            
+            <div class="flex flex-wrap justify-center gap-6">
+                <div class="bg-white p-3 pb-10 shadow-lg transform -rotate-3 hover:rotate-0 hover:scale-105 transition duration-500 w-40 efek-scroll">
+                    <img class="w-full h-40 object-cover grayscale hover:grayscale-0 transition duration-500" src="https://images.unsplash.com/photo-1519225495846-b9cf680ea122?q=80&w=400" alt="Galeri 1">
+                </div>
+                <div class="bg-white p-3 pb-10 shadow-lg transform rotate-2 hover:rotate-0 hover:scale-105 transition duration-500 w-40 efek-scroll" style="transition-delay: 100ms;">
+                    <img class="w-full h-40 object-cover grayscale hover:grayscale-0 transition duration-500" src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=400" alt="Galeri 2">
+                </div>
+                <div class="bg-white p-3 pb-10 shadow-lg transform -rotate-1 hover:rotate-0 hover:scale-105 transition duration-500 w-40 efek-scroll" style="transition-delay: 200ms;">
+                    <img class="w-full h-40 object-cover grayscale hover:grayscale-0 transition duration-500" src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=400" alt="Galeri 3">
+                </div>
+                <div class="bg-white p-3 pb-10 shadow-lg transform rotate-3 hover:rotate-0 hover:scale-105 transition duration-500 w-40 efek-scroll" style="transition-delay: 300ms;">
+                    <img class="w-full h-40 object-cover grayscale hover:grayscale-0 transition duration-500" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=400" alt="Galeri 4">
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-stone-200/50 py-16 px-8 text-center relative z-10">
+            <h2 class="font-editorial text-4xl text-stone-800 tracking-wide mb-4 efek-scroll">Tanda Kasih</h2>
+            <p class="font-sans text-[10px] text-stone-500 tracking-wide leading-relaxed mb-8 max-w-xs mx-auto efek-scroll">Doa restu Anda merupakan karunia yang sangat berarti. Namun jika Anda bermaksud memberikan tanda kasih, dapat melalui tautan berikut:</p>
+            
+            <div class="bg-white p-8 border border-stone-200 max-w-xs mx-auto text-center relative efek-scroll shadow-sm">
+                <div class="font-sans font-bold tracking-[0.2em] text-[10px] text-stone-800 mb-2">BCA</div>
+                <div class="font-editorial text-lg text-stone-600 mb-6 italic">Yasin Umar Sardi</div>
+                
+                <div class="flex items-center justify-center gap-3">
+                    <span id="no-rek" class="font-sans text-sm tracking-[0.2em] text-stone-800">1234567890</span>
+                </div>
+                <button id="btn-salin" class="mt-6 border border-stone-800 text-stone-800 hover:bg-stone-800 hover:text-white font-sans text-[9px] px-6 py-2 tracking-[0.2em] uppercase transition duration-300 cursor-pointer w-full">Salin Rekening</button>
+                <span id="notif-salin" class="absolute bottom-3 left-1/2 -translate-x-1/2 text-[9px] text-green-700 tracking-widest hidden uppercase">Tersalin</span>
+            </div>
+        </section>
+
+        <section class="py-16 px-8 relative z-10">
+            <div class="text-center mb-10 efek-scroll">
+                <h2 class="font-editorial text-4xl text-stone-800 tracking-wide mb-2">Kehadiran & Doa</h2>
+                <div class="w-8 h-[1px] bg-stone-300 mx-auto"></div>
+            </div>
+            
+            <form id="form-ucapan" class="space-y-5 efek-scroll">
+                <div>
+                    <input type="text" id="input-nama" required placeholder="Nama Lengkap" class="w-full bg-transparent border-b border-stone-300 py-3 text-xs font-sans focus:outline-none focus:border-stone-800 transition rounded-none placeholder-stone-400">
+                </div>
+                <div>
+                    <select id="input-konfirmasi" class="w-full bg-transparent border-b border-stone-300 py-3 text-xs font-sans focus:outline-none focus:border-stone-800 transition rounded-none text-stone-500">
+                        <option value="Hadir">Hadir Memberikan Doa</option>
+                        <option value="Tidak Hadir">Maaf, Belum Bisa Hadir</option>
+                    </select>
+                </div>
+                <div>
+                    <textarea id="input-pesan" rows="3" required placeholder="Tuliskan ucapan dan doa restu..." class="w-full bg-transparent border-b border-stone-300 py-3 text-xs font-sans focus:outline-none focus:border-stone-800 transition rounded-none placeholder-stone-400 resize-none"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-stone-800 hover:bg-stone-900 text-white font-sans py-4 text-[10px] tracking-[0.2em] uppercase transition duration-300 cursor-pointer mt-4">
+                    Kirim Pesan
+                </button>
+            </form>
+
+            <div class="mt-12 space-y-4 max-h-72 overflow-y-auto pr-2 efek-scroll" id="box-pesan">
+                <div class="bg-white p-5 border border-stone-100 shadow-sm">
+                    <div class="flex items-center justify-between mb-3">
+                        <strong class="font-editorial text-lg text-stone-800">Admin</strong>
+                        <span class="text-[8px] border border-stone-300 text-stone-600 px-2 py-1 uppercase tracking-widest">Hadir</span>
+                    </div>
+                    <p class="font-sans text-[10px] text-stone-500 leading-relaxed tracking-wide">Selamat menempuh hidup baru Yasin dan Afzah! Semoga perjalanan kalian penuh dengan cinta dan keberkahan.</p>
+                </div>
+            </div>
+        </section>
+
+        <div id="wadah-bunga"></div>
+    </main>
+
+    <div class="fixed bottom-6 right-6 z-40 flex flex-col gap-3 items-center">
+        <button id="btn-scroll" class="bg-white/80 backdrop-blur border border-stone-200 text-stone-700 hover:bg-stone-800 hover:text-white text-[8px] font-sans font-bold uppercase tracking-widest w-10 h-10 rounded-full shadow-lg transition duration-500 hidden cursor-pointer flex items-center justify-center">
+            Auto
+        </button>
+        <button id="btn-musik" class="bg-stone-800 text-[#F2E8C6] border border-stone-700 hover:bg-stone-900 text-[8px] font-sans font-bold uppercase tracking-widest w-10 h-10 rounded-full shadow-lg transition duration-500 hidden cursor-pointer flex items-center justify-center dynamic-pulse">
+            <span id="ikon-musik">Mute</span>
+        </button>
+    </div>
+
+    <script src="src/script.js"></script>
+</body>
+</html>
